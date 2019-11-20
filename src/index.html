@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Application décentralisée du vote éléctronique</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <link rel="shortcut icon" type="image/png" href="https://cdn.crunchify.com/favicon.ico" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    
+
+  
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
+
+
+   
+    <style>
+
+        .carousel-item {
+            height: 100vh;
+            min-height: 350px;
+            background: no-repeat center center scroll;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .candidate {
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+        }
+
+
+
+        button {
+            margin: 10px;
+
+
+        }
+
+        .jumbotron {
+            background-color: dodgerblue;
+            color: white;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div style="background:gray;color:white;text-align: center;margin:0px;margin-bottom:10px;padding:20px">
+        <h1 class="text-center">Eléction présidentielle</h1>
+        <div id="header"></div>
+    </div>
+
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li id="addCandidateLi" style="display: none;"><a data-toggle="tab" href="#addCandidate">Confirmation ID candidat</a>
+            </li>
+            <li id="votersLi" style="display: none;"><a data-toggle="tab" href="#voters">Confirmation ID électeur</a></li>
+            <li id="candidatesLi" style="display: none;"><a data-toggle="tab" href="#candidates">Candidats</a>
+            </li>
+            <li id="resultLi" style="display: none;"><a data-toggle="tab" href="#result">Phase finale</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="addCandidate" class="tab-pane fade">
+                <div class="page-header">
+                    <h2>Inscription des candidats</h2>
+                </div>
+
+                <form id="f"  class="form-horizontal" >
+                <div class="form-group ">
+                    
+                    <label class="col-sm-3 control-label">ID </label>
+                    <div class="col-sm-5">
+                    <input type="text" class="form-control input-lg" id="id1" name="id" aria-describedby="emailHelp" placeholder="Entrer votre numéro de carte d'identité" >
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label class="col-sm-3 control-label">Nom </label>
+                    <div class="col-sm-5">
+                     <input type="text" class="form-control input-lg" name="candidateName" id="candidateName1" aria-describedby="emailHelp" placeholder="Entrer votre nom" >    
+                     </div> 
+                </div>
+
+                <div class="form-group ">
+                    <label class="col-sm-3 control-label">Prénom </label>
+                    <div class="col-sm-5">
+                    <input type="text" class="form-control input-lg" id="candidatefName1"  name ="candidatefName" aria-describedby="emailHelp" placeholder="Entrer votre prénom" > 
+                    </div>    
+                </div>
+
+                <div class="form-group ">
+                    <label class="col-sm-3 control-label">Adresse </label>
+                    <div class="col-sm-5">
+                    <input type="text" class="form-control input-lg" id="wilaya1" name="wilaya" aria-describedby="emailHelp" placeholder="Entrer le nom de votre wilaya" >
+                    </div> 
+                </div>
+
+                <div class="form-group ">  
+                    <label class="col-sm-3 control-label">Code attestation </label>
+                    <div class="col-sm-5">
+                    <input type="text" class="form-control input-lg" id="code1" name="code" aria-describedby="emailHelp" placeholder="Entrer votre code d'atestation candidature"  >  
+                    </div> 
+                 </div>   
+
+                 <div class="form-group">
+                        <div class="col-sm-9 col-sm-offset-3">
+                    <button   class="btn btn-lg btn-success submit-button" onclick="addNewCandidate()" >Inscrire</button>
+                    </div> 
+                    </div> 
+
+
+
+                </form>
+              
+                <div class="form-group ">
+                </div>
+            </div>
+            <div id="voters" class="tab-pane fade">
+                 <div class="page-header">
+                    <h2>Inscription des élécteurs</h2>
+                </div>
+
+                <form id="ff"  class="form-horizontal" >
+                <div class="form-group ">
+                    
+                    <label class="col-sm-3 control-label">ID </label>
+                    <div class="col-sm-5">
+                    <input type="text" class="form-control input-lg" id="id2" name="ide" aria-describedby="emailHelp" placeholder="Entrer votre numéro du carte d'identité" >
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label class="col-sm-3 control-label">Nom </label>
+                    <div class="col-sm-5">
+                     <input type="text" class="form-control input-lg" name="Name" id="Name2" aria-describedby="emailHelp" placeholder="Entrer votre nom" >    
+                     </div> 
+                </div>
+
+                <div class="form-group ">
+                    <label class="col-sm-3 control-label">Prénom </label>
+                    <div class="col-sm-5">
+                    <input type="text" class="form-control input-lg" id="fName2"  name ="fName" aria-describedby="emailHelp" placeholder="Entrer votre prénom" > 
+                    </div>    
+                </div>
+
+                <div class="form-group ">
+                    <label class="col-sm-3 control-label">Adresse </label>
+                    <div class="col-sm-5">
+                    <input type="text" class="form-control input-lg" id="wilaya2" name="wilayae" aria-describedby="emailHelp" placeholder="Entrer le nom de votre wilaya" >
+                    </div> 
+                </div>
+
+                
+
+                 <div class="form-group">
+                        <div class="col-sm-9 col-sm-offset-3">
+                    <button   class="btn btn-lg btn-success submit-button" onclick="authorizeVoter()" >Inscrire</button>
+                    </div> 
+                    </div> 
+
+
+
+                </form>
+                
+
+
+
+
+
+               
+            </div>
+            <div id="candidates" class="tab-pane fade">
+                 <div class="page-header">
+                    <h2>Candidats</h2>
+                </div>
+
+
+            </div>
+            <div id="result" class="tab-pane fade">
+            <div class="form-group ">
+                     <div class="page-header">
+                    <h2>Résultat</h2>
+                </div>
+
+                <form id="f"  class="form-horizontal" >
+                <div class="form-group ">
+                    <div id="candidateList" class="list-group">
+                        <!-- <a href="#" class="list-group-item">First item<span class="badge">12</span></a>
+                        <a href="#" class="list-group-item">Second item</a>
+                        <a href="#" class="list-group-item">Third item</a> -->
+                    </div>
+                </div>
+            <div id="menu3" class="tab-pane fade">
+                <h3>Menu 3</h3>
+                <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // $("#f").validate();
+    //var validator = $( "#f" ).validate();
+     //validator.form();
+
+
+
+$(document).ready(function() {
+    $('#ff').bootstrapValidator({
+        // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+     //   submitButtons: 'button[type="submit"]',
+        fields: {
+            ide: {
+                message: 'Votre ID est invalide',
+                validators: {
+                    notEmpty: {
+                        message: 'Le ID est obligatoire'
+                    },
+                    stringLength: {
+                        min: 2,
+                        max: 30,
+                        message: 'Le ID doit contenir au moins deux numéros'
+                    },
+                    regexp: {
+                        regexp: /^[0-9]+$/,
+                        message: 'Le ID doit étre un nombre'
+                    },
+                    
+                }
+            },
+            Name: {
+                message: 'Votre nom est invalide',
+                validators: {
+                    notEmpty: {
+                        message: 'Votre nom est obligatoire'
+                    },
+                    stringLength: {
+                        min: 3,
+                        max: 30,
+                        message: 'Le nom doit contenir au moins 3 caractéres'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z]+$/,
+                        message: 'Le nom doit contenir que des lettres'
+                    },
+                    
+                }
+            },
+            fName: {
+                message: 'Votre prénom est invalide',
+                validators: {
+                    notEmpty: {
+                        message: 'Votre prénom est obligatoire'
+                    },
+                    stringLength: {
+                        min: 3,
+                        max: 30,
+                        message: 'Le prénom doit contenir au moins 3 caractéres'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z]+$/,
+                        message: 'Le prénom doit contenir que des lettres'
+                    },
+                    
+                }
+            },
+            wilayae: {
+                message: 'Votre adresse est invalide',
+                validators: {
+                    notEmpty: {
+                        message: 'Votre adresse est obligatoire'
+                    },
+                    stringLength: {
+                        min: 3,
+                        max: 30,
+                        message: 'L\'adresse doit contenir au moins 3 caractéres'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9]+$/,
+                        message: 'L\'adresse doit contenir que des lettres ou des chiffres'
+                    },
+                    
+                }
+            },
+            
+        }
+    });
+});
+
+ /*   $('#f').on('status.field.bv', function(e, data) {
+        formIsValid = true;
+        $('.form-group',$(this)).each( function() {
+            formIsValid = formIsValid && $(this).hasClass('has-success');
+        });
+        
+        if(formIsValid) {
+            $('.submit-button', $(this)).attr('disabled', false);
+        } else {
+            $('.submit-button', $(this)).attr('disabled', true);
+        }
+    });*/
+    </script>
+    <script>
+        $(document).ready(function() {
+    $('#f').bootstrapValidator({
+        // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+     //   submitButtons: 'button[type="submit"]',
+        fields: {
+            id: {
+                message: 'Votre ID est invalide',
+                validators: {
+                    notEmpty: {
+                        message: 'Le ID est obligatoire'
+                    },
+                    stringLength: {
+                        min: 2,
+                        max: 30,
+                        message: 'Le ID doit contenir au moins deux numéros'
+                    },
+                    regexp: {
+                        regexp: /^[0-9]+$/,
+                        message: 'Le ID doit étre un nombre'
+                    },
+                    
+                }
+            },
+            candidateName: {
+                message: 'Votre nom est invalide',
+                validators: {
+                    notEmpty: {
+                        message: 'Votre nom est obligatoire'
+                    },
+                    stringLength: {
+                        min: 3,
+                        max: 30,
+                        message: 'Le nom doit contenir au moins 3 caractéres'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z]+$/,
+                        message: 'Le nom doit contenir que des lettres'
+                    },
+                    
+                }
+            },
+            candidatefName: {
+                message: 'Votre prénom est invalide',
+                validators: {
+                    notEmpty: {
+                        message: 'Votre prénom est obligatoire'
+                    },
+                    stringLength: {
+                        min: 3,
+                        max: 30,
+                        message: 'Le prénom doit contenir au moins 3 caractéres'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z]+$/,
+                        message: 'Le prénom doit contenir que des lettres'
+                    },
+                    
+                }
+            },
+            wilaya: {
+                message: 'Votre adresse est invalide',
+                validators: {
+                    notEmpty: {
+                        message: 'Votre adresse est obligatoire'
+                    },
+                    stringLength: {
+                        min: 3,
+                        max: 30,
+                        message: 'L\'adresse doit contenir au moins 3 caractéres'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9]+$/,
+                        message: 'L\'adresse doit contenir que des lettres ou des chiffres'
+                    },
+                    
+                }
+            },
+            code: {
+                message: 'Votre code est invalide',
+                validators: {
+                    notEmpty: {
+                        message: 'Votre code est obligatoire'
+                    },
+                    stringLength: {
+                        min: 4,
+                        max: 30,
+                        message: 'Le code doit contenir au moins 4 caractéres'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9]+$/,
+                        message: 'Le code doit contenir que des lettres ou des chiffres'
+                    },
+                    
+                }
+            },
+            
+        }
+    });
+});
+   </script> 
+
+    <!-- This exposes the library as a global variable: ethers -->
+    <script src="https://cdn.ethers.io/scripts/ethers-v4.min.js" charset="utf-8" type="text/javascript"></script>
+    <script src="./contract.js"></script>
+    <script src="./app.js"></script>
+    
+</body>
+
+</html>
