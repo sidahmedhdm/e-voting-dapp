@@ -7,3 +7,4 @@ npm
 Ganache
 Truffle Framework
 Metamask
+you can test the Smart contracts under Remix IDE
